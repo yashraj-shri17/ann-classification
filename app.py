@@ -54,7 +54,7 @@ geo_encoded = onehot_encoder_geo.transform(input_data[['Geography']]).toarray()
 # Create a DataFrame for the one-hot encoded geography values
 geo_encoded_df = pd.DataFrame(
     geo_encoded,
-    columns=onehot_encoder_geo.get_feature_names_out(['Geography'])
+    columns=[f"Geography_{cat}" for cat in onehot_encoder_geo.categories_[0]]
 )
 
 # Combine features: Drop 'Geography' column and append encoded geography data
